@@ -1,12 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import * as React from "react";
+import ReactDOM from "react-dom";
+import { useState } from "react";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import DisplayRemoteData from "./DisplayRemoteData";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const App = () => {
+  const [id, setId] = useState("1"); 
+  return (
+    <div>
+      <div>
+        id:
+        <input value={id} onChange={e => setId(e.target.value)} />
+        {id && <DisplayRemoteData id={id} />}
+      </div>
+      <hr />    
+    </div>
+  );
+};
+
+export default App;
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
