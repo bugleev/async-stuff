@@ -32,7 +32,7 @@ const DisplayRemoteData = ({ id }) => {
         start
       </button>
       {asyncTask.error ? <Err error={asyncTask.error} /> : null}
-      {asyncTask.pending ? <Loading abort={asyncTask.abort} /> : null}
+      {asyncTask.started && asyncTask.pending ? <Loading abort={asyncTask.abort} /> : null}
       {asyncTask.result ? (
         <div className="data">RemoteData: {asyncTask.result.title}</div>
       ) : null}
